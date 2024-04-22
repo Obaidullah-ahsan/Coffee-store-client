@@ -12,10 +12,15 @@ import cup5 from "../../assets/images/cups/Rectangle 13.png";
 import cup6 from "../../assets/images/cups/Rectangle 14.png";
 import cup7 from "../../assets/images/cups/Rectangle 15.png";
 import cup8 from "../../assets/images/cups/Rectangle 16.png";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { BsCup } from "react-icons/bs";
+import CoffeeCard from "../../Components/CoffeeCard/CoffeeCard";
+import { useState } from "react";
 
 const Home = () => {
+  const coffeeData = useLoaderData();
+  const [remainingCoffee, setRemainingCoffee] = useState(coffeeData);
+  console.log(coffeeData);
   return (
     <div>
       <div className="banner flex justify-end items-center">
@@ -63,13 +68,27 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className="my-10">
+      <div className="my-10 mx-32">
         <div className="text-center mx-auto">
           <p className="font-Rancho">--- Sip & Savor ---</p>
           <h2 className="font-Rancho text-5xl text-[#331A15] my-3">
-          Our Popular Products
+            Our Popular Products
           </h2>
-          <Link to="/addcoffee"><button className="btn bg-[#E3B577] font-Rancho font-normal border-black text-white text-2xl">Add Coffee <BsCup color="black"/></button></Link>
+          <Link to="/addcoffee">
+            <button className="btn bg-[#E3B577] font-Rancho font-normal border-black text-white text-2xl">
+              Add Coffee <BsCup color="black" />
+            </button>
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 mt-10">
+          {remainingCoffee.map((coffee) => (
+            <CoffeeCard
+              key={coffee._id}
+              coffee={coffee}
+              remainingCoffee={remainingCoffee}
+              setRemainingCoffee={setRemainingCoffee}
+            ></CoffeeCard>
+          ))}
         </div>
       </div>
       <div className="mx-32 my-20">
