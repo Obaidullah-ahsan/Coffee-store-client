@@ -33,9 +33,9 @@ const Home = () => {
             nostalgia back!! Your companion of every moment!!! Enjoy the
             beautiful moments and make them memorable.
           </p>
-          <button className="btn text-black bg-[#E3B577] text-xl font-Rancho border-0 rounded-none">
-            Learn More
-          </button>
+          <Link to="/users" className="btn text-black bg-[#E3B577] text-xl font-Rancho border-0 rounded-none">
+            Users
+          </Link>
         </div>
       </div>
       <div className="bg-[#ECEAE3] flex gap-7 px-32 py-5">
